@@ -18,6 +18,7 @@ namespace IP_Parser
         private protected readonly static string pathSaveIPSuccessList;
         private protected readonly static string pathSaveIPFailList;
         private protected TcpClient tcpClient = new TcpClient();
+        private protected static int port = 80;
 
         static IP()
         {

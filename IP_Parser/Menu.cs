@@ -22,9 +22,11 @@ namespace IP_Parser
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine(" Menu:");
+                Console.WriteLine();
                 Console.WriteLine(" 1. Start parse");
                 Console.WriteLine(" 2. How to use");
                 Console.WriteLine(" 3. Exit");
+                Console.WriteLine();
                 Console.Write(" Enter: ");
                 choice = Console.ReadLine();
 

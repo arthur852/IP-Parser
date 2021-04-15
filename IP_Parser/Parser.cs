@@ -52,6 +52,58 @@ namespace IP_Parser
             }
         }
 
+        private void EnterPort()
+        {
+            Console.Clear();
+            Console.WriteLine("\t\t\t\t\t ================================= ");
+            Console.WriteLine("\t\t\t\t\t ==                             == ");
+            Console.WriteLine("\t\t\t\t\t ==          IP Parser          == ");
+            Console.WriteLine("\t\t\t\t\t ==                             == ");
+            Console.WriteLine("\t\t\t\t\t ================================= ");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.Write(" Enter port: ");
+            int enterport = int.Parse(Console.ReadLine());
+            port = enterport;
+        }
+
+        private void SelectPort()
+        {
+            Console.Clear();
+            Console.WriteLine("\t\t\t\t\t ================================= ");
+            Console.WriteLine("\t\t\t\t\t ==                             == ");
+            Console.WriteLine("\t\t\t\t\t ==          IP Parser          == ");
+            Console.WriteLine("\t\t\t\t\t ==                             == ");
+            Console.WriteLine("\t\t\t\t\t ================================= ");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.Write(" Do you select the port? (y or n) (default port: 80): ");
+
+            string str = Console.ReadLine();
+
+            switch (str)
+            {
+                case "Y":
+                    EnterPort();
+                    break;
+                case "y":
+                    EnterPort();
+                    break;
+                case "N":
+                    break;
+                case "n":
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(" Incorrect choice!");
+                    Console.ResetColor();
+                    Thread.Sleep(1000);
+                    Console.Beep();
+                    SelectPort();
+                    break;
+            }
+        }
+
         private string IPStyleChoice()
         {
             Console.Clear();
@@ -67,8 +119,9 @@ namespace IP_Parser
             Console.WriteLine(" 1. Default (142.250.185.110)");
             Console.WriteLine(" 2. CIDR (37.46.252.0/24)");
             Console.WriteLine(" 3. Range (37.46.252.0-37.46.252.255)");
+            Console.WriteLine();
 
-            Console.Write("Enter: ");
+            Console.Write(" Enter: ");
             string ipChoice = Console.ReadLine();
             LoadIPList(ipChoice);
             return ipChoice;
@@ -85,6 +138,8 @@ namespace IP_Parser
                     ipList.Add(line);
                 }
             }
+
+            SelectPort();
 
             switch (ipChoice)
             {
@@ -185,7 +240,7 @@ namespace IP_Parser
                     try
                     {
                         tcpClient = new TcpClient();
-                        tcpClient.Connect(ip, 80);
+                        tcpClient.Connect(ip, port);
                         if (tcpClient.Connected == true)
                         {
                             ipSuccessList.Add(ip);
@@ -222,6 +277,8 @@ namespace IP_Parser
             Console.WriteLine(" Press Key..");
             Console.ReadLine();
             ipList.Clear();
+            ipSuccessList.Clear();
+            ipFailList.Clear();
         }
     }
 }
