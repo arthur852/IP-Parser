@@ -114,7 +114,7 @@ namespace IP_Parser
             Console.WriteLine("\t\t\t\t\t ================================= ");
             Console.WriteLine();
             Console.WriteLine();
-            Console.Write(" Choose a Style IP: ");
+            Console.WriteLine(" Choose a Style IP: ");
             Console.WriteLine();
             Console.WriteLine(" 1. Default (142.250.185.110)");
             Console.WriteLine(" 2. CIDR (37.46.252.0/24)");
